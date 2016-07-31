@@ -1,64 +1,43 @@
 var gulp = require('gulp');
-//var connect = require('gulp-connect');
+var connect = require('gulp-connect');
 var concat = require('gulp-concat');
-//var webserver = require('gulp-webserver');
+var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
-var minifyhtml = require('gulp-minify-html');
+var gulpUtil = require('gulp-util');
 var sass = require('gulp-sass');
-var livereload = require('gulp-livereload');
-var inject = require('gulp-inject');
+//var inject = require('gulp-inject');
 var removeLogs = require('gulp-removelogs');
+var livereload = require('gulp-livereload');
 
 var src = 'public/src';
 var dist = 'public/dist';
 
 var path = {
-	js: src + '/**/*.js',
-	scss: src + '/scss/*.scss',
-	html: src + '/html/*.html'
+	js: src + '/js/*.js',
+	scss: src + '/scss/*.scss'
 };
 
-/*
-gulp.task('server', function () {
-	return gulp.src('')
-		.pipe(webserver());
-});
-*/
-/*
 gulp.task('connect', function() {
-	connect.sever({
-		root:'',
-		port:8080
+	connect.server({
+		port:8000
 	});
 });
-*/
-/*
+
 gulp.task('combine-js', function () {
-	return gulp.src([
-		'bower_components/jquery/dist/jquery.min.js',
-		'bower_components/underscore/underscore-min.js',
-		'bower_components/backbone/backbone-min.js',
-		path.js,
-		src + '/controller/*.js',
-		src + '/router/*.js'])
+	return gulp.src([path.js])
 		.pipe(concat('script.js'))
 		.pipe(removeLogs())
-		.pipe(uglify()) //minify 해서
+		.pipe(uglify().on('error', gulpUtil.log))
 		.pipe(gulp.dest(dist+'/js'));
 });
-*/
-gulp.task('compile-sass', function(){
+
+gulp.task('sass', function(){
 	return gulp.src(path.scss)
 		.pipe(sass())
 		.pipe(gulp.dest(dist + '/css'));
 });
 
-gulp.task('compress-html', function(){
-	return gulp.src(path.html)
-		.pipe(minifyhtml())
-		.pipe(gulp.dest(dist + '/html'));
-});
-
+/*
 gulp.task('inject', function(){
 	var target = gulp.src('index.html');
 	var sources = gulp.src([dist + '/js/*.js', dist + '/css/*.css']);
@@ -67,13 +46,13 @@ gulp.task('inject', function(){
 		.pipe(gulp.dest(''))
 
 });
+*/
 
 gulp.task('watch', function(){
 	livereload.listen();
 	gulp.watch(path.js, ['combine-js']);
-	gulp.watch(path.scss, ['compile-sass']);
-	gulp.watch(path.html, ['compress-html']);
+	gulp.watch(path.scss, ['sass']);
 	gulp.watch(dist + '/**').on('change', livereload.changed);
 });
 
-gulp.task('default',['combine-js','compile-sass','compress-html','inject','watch','server']);
+gulp.task('default',['connect','watch']);
