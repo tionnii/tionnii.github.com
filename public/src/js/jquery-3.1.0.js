@@ -1,4 +1,4 @@
-document.domain = "naver.com";ffffffffffffff
+document.domain = "naver.com";ddddddddddddddddddddddddddddddddddddddddddddddd
 function $() {
 	var ret = [];
 	for ( var i = 0; i < arguments.length; i++) {
