@@ -17,6 +17,13 @@
   },
   "homepage": "https://github.com/tionnii/tionnii.github.com#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-removelogs": "^0.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7"
   }
 }

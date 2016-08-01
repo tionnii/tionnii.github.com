@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var concat = require('gulp-concat');
-var useref = require('gulp-useref');
+//var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var gulpUtil = require('gulp-util');
 var sass = require('gulp-sass');
@@ -19,7 +19,8 @@ var path = {
 
 gulp.task('connect', function() {
 	connect.server({
-		port:8000
+		port:8000,
+		livereload:true
 	});
 });
 
@@ -49,7 +50,6 @@ gulp.task('inject', function(){
 */
 
 gulp.task('watch', function(){
-	livereload.listen();
 	gulp.watch(path.js, ['combine-js']);
 	gulp.watch(path.scss, ['sass']);
 	gulp.watch(dist + '/**').on('change', livereload.changed);
