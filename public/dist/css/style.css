@@ -1,8 +1,1 @@
-header {
-  width: 80%;
-  height: 50px;
-  border-color: #000; }
-
-body {
-  background-color: orange;
-  font-size: 50px; }
+body{font-size:100px;background-color:#000}body .header{background-color:orange}

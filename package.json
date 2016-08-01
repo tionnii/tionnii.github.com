@@ -18,8 +18,10 @@
   "homepage": "https://github.com/tionnii/tionnii.github.com#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
+    "gulp-htmlmin": "^2.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-removelogs": "^0.1.0",
     "gulp-sass": "^2.3.2",
