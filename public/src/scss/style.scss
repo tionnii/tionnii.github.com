@@ -1,7 +1,21 @@
+@charset "utf-8";
+@import url(webfont.css);
+@import url(reset.css);
+
 body {
-	font-size:100px;
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #fff; 
 	background-color:#000;
-	.header {
-		background-color:orange;
+	a {
+		text-decoration:none;
+		font-size:100px;
+		color:#fff;
+		span {color:#fff}
+	},
+	a:hover {
+		text-decoration:none;
 	}
 }
