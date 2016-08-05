@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 <html lang="ko-KR">
 <head>
 <meta charset="utf-8" />
@@ -9,22 +8,26 @@
 <title>Web + Thing</title>
 <link rel="stylesheet" href="/public/dist/css/style.css">
 <link rel="stylesheet" href="/public/dist/css/common.css">
+<link rel="stylesheet" href="/public/dist/css/font-awesome.min.css">
 <script src="/public/dist/js/script.js"></script>
 </head>
 <body>
 	<header>
+		<h1><a href="#">W++</a></h1>
+
+		<!-- header :: path -->
 		<div class="path">
-			<h1><a href="#">W++</a></h1>
+			<a href="#" class="home"><i class="fa fa-home"></i></a>
 			<ul class="lv1">
 				<li>&nbsp;&gt;&nbsp;
 					<div class="lv2">
 						<a href="#">OPEN PROJECT</a>
 						<ul>
-							<li><a href="#">HOME</a></li>
-							<li><a href="#">COMPANY</a></li>
-							<li><a href="#">MEMBER</a></li>							
-							<li><a href="#">LINK</a></li>
-							<li><a href="#">ABOUT</a></li>
+							<li><a href="#">HOME<span>Ctrl+H</span></a></li>
+							<li><a href="#">COMPANY<span>Ctrl+C</span></a></li>
+							<li><a href="#">MEMBER<span>Ctrl+M</span></a></li>							
+							<li><a href="#">LINK<span>Ctrl+L</span></a></li>
+							<li><a href="#">ABOUT<span>Ctrl+A</span></a></li>
 						</ul>
 					</div>
 				</li>
@@ -32,19 +35,38 @@
 					<div class="lv2">
 						<a href="#">COMPANY PROJECT</a>
 						<ul>
-							<li><a href="#">COMPANY PROJECT-MENU01</a></li>
-							<li><a href="#">COMPANY PROJECT-MENU02</a></li>
-							<li><a href="#">COMPANY PROJECT-MENU03</a></li>
+							<li><a href="#">COMPANY PROJECT-MENU01<span>Alt+C1</span></a></li>
+							<li><a href="#">COMPANY PROJECT-MENU02<span>Alt+C2</span></a></li>
+							<li><a href="#">COMPANY PROJECT-MENU03<span>Alt+C3</span></a></li>
 						</ul>
 					</div>				
 				</li>
 			</ul>
 		</div>
+		<!-- //header :: path -->
+
+		<div class="util">
+			<div class="logoff">
+				<button type="button">SIGN UP</button>
+			</div>
+			<div class="login">
+				<button type="button">LOGOUT</button>
+			</div>
+			<div id="clock">
+				
+			</div>
+			<div class="search">
+				<span>
+					<b><input type="text" name="search" placeholder="SEARCH" /></b>
+				</span>
+				<button type="button"><i class="fa fa-search"></i></button>
+			</div>
+		</div>
+
 		<nav>
 			<a href="#" class="btn-nav">
 				<span class="bar-1"></span>
 				<span class="bar-2"></span>
-				<span class="bar-3"></span>
 			</a>
 		</nav>
 	</header>
@@ -63,5 +85,31 @@
 	<footer>
 		footer
 	</footer>
+	<script type="text/javascript">
+var dayarray = new Array("SUN","MON","TUE","WED","THU","FRI","SAT");
+
+function getthedate(){
+	var w_date = new Date();
+	var day = w_date.getDay();
+	var hours = w_date.getHours();
+	var minutes = w_date.getMinutes();
+	var seconds = w_date.getSeconds();	
+
+	var dn = "AM";
+	if (hours>=12) dn="PM";
+	if (hours>12) hours = hours-12;
+	if (hours==0) hours = 12;
+	if (minutes<=9) minutes = "0"+minutes;
+	if (seconds<=9) seconds = "0"+seconds;
+	//change font size here
+	var c_date = dayarray[day]+" "+hours+":"+minutes+":"+seconds+" "+dn;
+	document.getElementById("clock").innerHTML=c_date;
+}
+getthedate();
+function goforit(){
+	setInterval("getthedate()",1000);
+}
+goforit();
+	</script>
 </body>
 </html>
