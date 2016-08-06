@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/public/dist/css/style.css">
 <link rel="stylesheet" href="/public/dist/css/common.css">
 <link rel="stylesheet" href="/public/dist/css/font-awesome.min.css">
-<script src="/public/dist/js/script.js"></script>
+<script src="/public/dist/js/plugin/progressbar/progressbar.min.js"></script>
 </head>
 <body>
 	<header>
@@ -19,7 +19,7 @@
 		<div class="path">
 			<a href="#" class="home"><i class="fa fa-home"></i></a>
 			<ul class="lv1">
-				<li>&nbsp;&gt;&nbsp;
+				<li>&rsaquo;
 					<div class="lv2">
 						<a href="#">OPEN PROJECT</a>
 						<ul>
@@ -31,7 +31,7 @@
 						</ul>
 					</div>
 				</li>
-				<li>&nbsp;&gt;&nbsp;
+				<li>&rsaquo;
 					<div class="lv2">
 						<a href="#">COMPANY PROJECT</a>
 						<ul>
@@ -45,22 +45,25 @@
 		</div>
 		<!-- //header :: path -->
 
-		<div class="util">
+		<div class="util log"> <!-- [D] "log" on/off -->
 			<div class="logoff">
-				<span><button type="button" style="background-color:#0e3d59">LOG IN</button><b>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W++ 회원이면 로그인 해보세요.</b></span>
-				<span><button type="button" style="background-color:#88a61b">JOIN W++</button><b>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W++ 가입해서 다양한 프로젝트와 사람을 만나보세요.</b></span>
+				<div><button type="button">LOG IN</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 회원이면 로그인 해보세요.</p></div>
+				<div><button type="button">JOIN W++</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 가입해서 다양한 프로젝트와 사람을 만나보세요.</p></div>
 			</div>
 			<div class="login">
-				<span class="lv"><b>5</b></span>
-				<span class="name"><button type="button" style="background-color:#88a61b">JOIN W++</button></span>
+				<div id="lv">
+					<span>Lv&nbsp;<b>6</b></span>
+					<p class="header_lv"></p>
+				</div>
+				<div class="name"><button type="button" style="background-color:#88a61b">JOIN W++</button></div>
 			</div>			
 			<div id="clock">
 				
 			</div>
 			<div class="search">
-				<span>
-					<b><input type="text" name="search" placeholder="SEARCH" /></b>
-				</span>
+				<div>
+					<span><input type="text" name="search" placeholder="SEARCH" /></span>
+				</div>
 				<button type="button"><i class="fa fa-search"></i></button>
 			</div>
 		</div>
@@ -76,13 +79,11 @@
 
 
 	<style type="text/css">
-	#container span {display:inline-block;background-color:#030c22;padding:5px;border-radius:2px;font-size:12px;color:#9cc4e4}
-	#container span:hover {background-color:#feb41c;color:#030c22}
+	#progressbar {display:block;width:400px;height:8px;background-color:gray}
 	</style>
 	<section id="container">
 	<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span>HTML5</span>&nbsp;<span>CSS3</span>
-		<br /><span style="font-size:20px">1234567890</span><br/>
+		<span id="progressbar"></span><br />
 		project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>
 	</section>
 	<footer>
@@ -113,6 +114,51 @@ function goforit(){
 	setInterval("getthedate()",1000);
 }
 goforit();
+
+var lv = new ProgressBar.Circle('.header_lv', {
+ text: {
+        value: '',
+        className: 'txt-lv',
+        style: {
+            position: 'absolute',
+            left: '50%',
+            top: '76px',
+            padding: 0,
+            margin: 0,
+            transform: {
+                prefix: true,
+                value: 'translate(-50%, -50%)'
+            }
+        },
+	},	
+  strokeWidth: 10,
+  trailWidth: 10,
+  trailColor: '#c7c7c7',
+  easing: 'easeInOut',
+  duration: 1000,
+  from: { color: '#464646', width: 10 },
+  to: { color: '#464646', width: 10 },
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = Math.round(circle.value() * 100) + ' %';
+    if ((value === 0) || (value === '0 %')) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+    }
+  }
+});
+
+var over_lv = document.getElementById('lv');
+over_lv.addEventListener("mouseenter", function() {
+	lv.animate(0.88);
+});
+over_lv.addEventListener("mouseleave", function() {
+	lv.animate(0);
+});
+//lv.animate(0.88);  // Value from 0.0 to 1.0
 	</script>
 </body>
 </html>
