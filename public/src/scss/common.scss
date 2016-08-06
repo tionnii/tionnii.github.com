@@ -68,8 +68,17 @@ header {
 			span:hover b {display:block}
 		}
 		.login {
+			display:none;
 			float:left;
-			button {width:120px;height:60px;line-height:60px}
+			.lv {
+				position:relative;float:left;width:60px;height:60px;
+				b {position:absolute;top:5px;left:5px;width:50px;height:50px;border-radius:25px;background-color:$color_gray_lv3;font-size:30px;color:$color_white;text-align:center;line-height:50px}
+			}
+			.name {
+				float:left;width:180px;height:60px;background-color:$color_green;
+			}
+			span:hover button {opacity:0.8}
+			span:hover b {display:block}
 		}
 		#clock {
 			float:left;width:180px;height:60px;font-size:14px;text-align:center;line-height:60px;
@@ -85,6 +94,11 @@ header {
 				display:block;position:relative;z-index:20;width:60px;height:60px;background-color:$color_gray_lv3;font-size:24px;color:$color_white;text-align:center;line-height:60px
 			}
 		}
+	}
+
+	.util.log {
+		.logoff {display:none}
+		.login {display:block}
 	}
 
 	nav {

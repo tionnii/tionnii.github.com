@@ -2,12 +2,14 @@
 
 /* reset */
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
-body,input,textarea,select,button,table{font-family:'Nanum Gothic','돋움',Dotum, Helvetica,sansserif;font-size:12px}
+/*body,input,textarea,select,button,table{font-family:'Nanum Gothic','돋움',Dotum, Helvetica,sansserif;font-size:12px}*/
+body,input,textarea,select,button,table{font-family:Helvetica,sansserif;font-size:12px}
 img,fieldset{border:0}
 ul,ol{list-style:none}
 em,address{font-style:normal}
 a{color:#030c22;text-decoration:none}
 a:hover,a:active,a:focus{text-decoration:none}
+strong, b {font-weight:normal}
 button{cursor:pointer}
 input[type="text"],input[type="submit"],button{height:20px;border:0 none;outline:0;-webkit-appearance:none;font-size:14px;line-height:20px}
 /*.blind{visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0}*/
