@@ -131,13 +131,13 @@ var lv = new ProgressBar.Circle('.header_lv', {
             }
         },
 	},	
-  strokeWidth: 10,
-  trailWidth: 10,
+  strokeWidth: 6,
+  trailWidth: 6,
   trailColor: '#c7c7c7',
   easing: 'easeInOut',
   duration: 1000,
-  from: { color: '#464646', width: 10 },
-  to: { color: '#464646', width: 10 },
+  from: { color: '#464646', width: 6 },
+  to: { color: '#464646', width: 6 },
   step: function(state, circle) {
     circle.path.setAttribute('stroke', state.color);
     circle.path.setAttribute('stroke-width', state.width);
