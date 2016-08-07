@@ -9,18 +9,24 @@ $color_gray_lv2:#c7c7c7;
 $color_gray_lv3:#464646;
 
 /* point color setting :: 빨간색/파란색/녹색/주황색 */
-$color_blue_lv0:#97cfe6;
-$color_blue_lv1:#37a7d5;
-$color_green_lv0:#bdd08a;
-$color_green_lv1:#83a81d;
-$color_yello_lv0:#f6dd7c;
-$color_yello_lv1:#f4c300;
+$color_blue_lv0:#7cb5da;
+$color_blue_lv1:#0072bb;
+$color_green_lv0:#acda9f;
+$color_green_lv1:#60bb46;
+$color_orange_lv0:#fad494;
+$color_orange_lv1:#f99e1c;
 $color_red_lv0:#eb7c8e;
 $color_red_lv1:#df0024;
 
 /* white & black color setting */
 $color_white:#ffffff;
 $color_black:#000000;
+
+/* job color class */ /* job : planner / Designer / Publisher / Developer */
+.color-job1 {color:$color_red_lv1}
+.color-job2 {color:$color_orange_lv1}
+.color-job3 {color:$color_green_lv1}
+.color-job4 {color:$color_blue_lv1}
 
 body {min-width:$min_width_size;background-color:$color_gray_lv0}
 
@@ -90,9 +96,30 @@ header {
 				}
 			}
 			.name {
-				float:left;width:180px;height:60px;background-color:$color_green_lv1;
-				button {font-size:18px;color:$color_white;opacity:0.5}
+				position:relative;float:left;width:160px;height:60px;padding:0 10px;
+				strong {
+					display:block;height:20px;padding-top:10px;
+					a {display:inline-block;font-size:18px;line-height:20px;color:$color_gray_lv2}
+					a:hover {color:$color_gray_lv3}
+				}
+				span {
+					display:block;padding-top:5px;font-size:12px;color:$color_gray_lv2;font-weight:normal;
+					a {opacity:0.5}
+					a:hover {opacity:1}
+				}
 			}
+			.push {
+				position:relative;float:left;width:60px;height:60px;text-align:center;
+				a {display:block;font-size:40px;color:$color_gray_lv2;line-height:60px}
+				a:hover {color:$color_gray_lv3}
+				span {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_red_lv1;font-size:12px;color:$color_white;line-height:20px}
+			}
+			.quest {
+				position:relative;float:left;width:60px;height:60px;text-align:center;
+				a {display:block;font-size:40px;color:$color_gray_lv2;line-height:60px}
+				a:hover {color:$color_gray_lv3}
+				span {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_orange_lv1;font-size:12px;color:$color_white;line-height:20px}
+			}		
 			div:hover button {opacity:1}
 		}
 		#clock {float:left;width:180px;height:60px;font-size:18px;text-align:center;line-height:60px;color:$color_gray_lv3}
