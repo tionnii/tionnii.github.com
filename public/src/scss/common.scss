@@ -84,6 +84,13 @@ header {
 		.login {
 			display:none;
 			float:left;
+			.profile {
+				position:relative;float:left;width:60px;height:60px;
+				a {
+					display:block;height:60px;
+					img {width:100%}
+				}
+			}			
 			#lv {
 				position:relative;float:left;width:60px;height:60px;
 				span {
@@ -103,23 +110,77 @@ header {
 					a:hover {color:$color_gray_lv3}
 				}
 				span {
-					display:block;padding-top:5px;font-size:12px;color:$color_gray_lv2;font-weight:normal;
+					display:block;padding-top:5px;font-size:12px;color:$color_gray_lv2;
 					a {opacity:0.5}
 					a:hover {opacity:1}
 				}
+				.point {
+					display:none;position:absolute;top:60px;left:10px;height:30px;padding-top:0;font-size:12px;color:$color_gray_lv3;line-height:30px;
+					i {display:inline-block;height:30px;padding-left:5px;font-size:18px;color:$color_orange_lv1;line-height:30px;vertical-align:top}
+				}
 			}
+			.name:hover .point {display:block}
 			.push {
 				position:relative;float:left;width:60px;height:60px;text-align:center;
 				a {display:block;font-size:40px;color:$color_gray_lv2;line-height:60px}
-				a:hover {color:$color_gray_lv3}
-				span {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_red_lv1;font-size:12px;color:$color_white;line-height:20px}
+				.num {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_red_lv1;font-size:12px;color:$color_white;line-height:20px}
+				.list {
+					display:none;position:absolute;top:60px;left:50%;width:220px;margin-left:-120px;padding:0 10px;border-radius:5px;background-color:$color_gray_lv3;
+					strong {
+						display:block;position:relative;height:30px;color:$color_white;text-align:left;line-height:30px;
+						a {display:block;position:relative;height:30px;font-size:12px;color:$color_white;text-align:left;line-height:30px;opacity:0.5;
+							span {position:absolute;top:0;right:0;font-size:20px}
+						}
+						a:hover {opacity:1}
+					}
+					ul {
+						li {
+							position:relative;height:30px;border-top:1px solid $color_gray_lv2;text-align:left;line-height:30px;color:$color_gray_lv2;
+							i {display:inline-block;padding-right:5px}
+							span {
+								position:absolute;top:0;right:0;height:30px;font-size:12px;color:$color_gray_lv2;line-height:30px;
+								a {display:inline-block;height:30px;font-size:12px;color:$color_white;opacity:0.5;line-height:30px}
+								a:hover {opacity:1}
+							}
+						}
+						li:hover {color:$color_white}
+					}
+					.fa-caret-up {position:absolute;top:-8px;left:50%;height:9px;margin-left:-8px;font-size:28px;color:$color_gray_lv3;line-height:6px}
+				}
 			}
+			.push:hover a {color:$color_gray_lv3}
+			.push:hover .list {display:block}
 			.quest {
 				position:relative;float:left;width:60px;height:60px;text-align:center;
 				a {display:block;font-size:40px;color:$color_gray_lv2;line-height:60px}
-				a:hover {color:$color_gray_lv3}
-				span {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_orange_lv1;font-size:12px;color:$color_white;line-height:20px}
-			}		
+				.num {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_orange_lv1;font-size:12px;color:$color_white;line-height:20px}
+				.list {
+					display:none;position:absolute;top:60px;left:50%;width:220px;margin-left:-120px;padding:0 10px;border-radius:5px;background-color:$color_gray_lv3;
+					strong {
+						display:block;position:relative;height:30px;color:$color_white;text-align:left;line-height:30px;
+						a {display:block;position:relative;height:30px;font-size:12px;color:$color_white;text-align:left;line-height:30px;opacity:0.5;
+							span {position:absolute;top:0;right:0;font-size:20px}
+						}
+						a:hover {opacity:1}
+					}
+					ul {
+						li {
+							position:relative;height:30px;border-top:1px solid $color_gray_lv2;text-align:left;line-height:30px;color:$color_gray_lv2;
+							i {display:inline-block;padding-right:5px}
+							span {
+								position:absolute;top:0;right:0;height:30px;font-size:12px;color:$color_white;line-height:30px;
+								i {display:inline-block;height:30px;padding-left:5px;font-size:18px;color:$color_orange_lv1;line-height:30px;vertical-align:top}
+								.fa-arrow-circle-up {color:$color_green_lv1}
+							}
+						}
+						li:hover {color:$color_white}
+						.on i {color:$color_orange_lv1}
+					}
+					.fa-caret-up {position:absolute;top:-8px;left:50%;height:9px;margin-left:-8px;font-size:28px;color:$color_gray_lv3;line-height:6px}
+				}				
+			}
+			.quest:hover a {color:$color_gray_lv3}
+			.quest:hover .list {display:block}			
 			div:hover button {opacity:1}
 		}
 		#clock {float:left;width:180px;height:60px;font-size:18px;text-align:center;line-height:60px;color:$color_gray_lv3}
