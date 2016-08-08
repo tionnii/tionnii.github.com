@@ -1,12 +1,12 @@
 @charset "utf-8";
 /* page min width size */
-$min_width_size:1024px;
+$min_width_size:980px;
 
 /* Theme color setting :: lv이 높을수록 색이 진함 */
 $color_gray_lv0:#f8f8f8;
 $color_gray_lv1:#e6e6e6;
-$color_gray_lv2:#c7c7c7;
-$color_gray_lv3:#464646;
+$color_gray_lv2:#9b9ea0;
+$color_gray_lv3:#383d42;
 
 /* point color setting :: 빨간색/파란색/녹색/주황색 */
 $color_blue_lv0:#7cb5da;
@@ -75,6 +75,8 @@ header {
 				p {
 					display:none;position:absolute;top:60px;left:0;height:30px;font-weight:normal;color:$color_gray_lv3;line-height:30px;white-space:nowrap;
 					b {display:inline-block;height:30px;font-size:20px;line-height:30px;vertical-align:-2px}
+					a {display:inline-block;height:30px;color:$color_gray_lv3;line-height:30px;opacity:0.5}
+					a:hover {opacity:1}
 				}
 			}
 			div:first-child button {background-color:$color_blue_lv1}
@@ -125,7 +127,7 @@ header {
 				a {display:block;font-size:40px;color:$color_gray_lv2;line-height:60px}
 				.num {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_red_lv1;font-size:12px;color:$color_white;line-height:20px}
 				.list {
-					display:none;position:absolute;top:60px;left:50%;width:220px;margin-left:-120px;padding:0 10px;border-radius:5px;background-color:$color_gray_lv3;
+					display:none;position:absolute;top:60px;left:50%;width:220px;margin-left:-120px;padding:0 10px;border-radius:5px;background-color:$color_gray_lv3;box-shadow:5px 5px 10px -5px $color_gray_lv3;
 					strong {
 						display:block;position:relative;height:30px;color:$color_white;text-align:left;line-height:30px;
 						a {display:block;position:relative;height:30px;font-size:12px;color:$color_white;text-align:left;line-height:30px;opacity:0.5;
@@ -155,7 +157,7 @@ header {
 				a {display:block;font-size:40px;color:$color_gray_lv2;line-height:60px}
 				.num {position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:10px;background-color:$color_orange_lv1;font-size:12px;color:$color_white;line-height:20px}
 				.list {
-					display:none;position:absolute;top:60px;left:50%;width:220px;margin-left:-120px;padding:0 10px;border-radius:5px;background-color:$color_gray_lv3;
+					display:none;position:absolute;top:60px;left:50%;width:220px;margin-left:-120px;padding:0 10px;border-radius:5px;background-color:$color_gray_lv3;box-shadow:5px 5px 10px -5px $color_gray_lv3;
 					strong {
 						display:block;position:relative;height:30px;color:$color_white;text-align:left;line-height:30px;
 						a {display:block;position:relative;height:30px;font-size:12px;color:$color_white;text-align:left;line-height:30px;opacity:0.5;
@@ -182,6 +184,33 @@ header {
 			.quest:hover a {color:$color_gray_lv3}
 			.quest:hover .list {display:block}			
 			div:hover button {opacity:1}
+		}
+		.rank {
+			float:left;width:300px;height:60px;font-size:18px;text-align:center;line-height:60px;
+			ol {
+				li {
+					display:none;overflow:hidden;height:30px;border-top:1px solid $color_gray_lv1;background-color:$color_gray_lv3;color:$color_white;text-align:left;line-height:30px;
+					em {float:left;width:40px;height:30px;font-size:18px;line-height:30px;text-align:center;vertical-align:top;opacity:0.5}
+					a  {float:left;width:210px;height:30px;padding-right:10px;font-size:12px;color:$color_white;line-height:30px;text-align:left;vertical-align:top;opacity:0.5}
+					b {float:left;width:30px;height:30px;padding-right:10px;font-size:12px;opacity:0.5;line-height:30px;text-align:right;
+						i {float:left;height:30px;margin-right:5px;font-size:18px;line-height:30px}
+					}
+					.fa-caret-up {color:$color_red_lv1}
+					.fa-caret-down {color:$color_blue_lv1}
+					.fa-minus {font-size:14px;color:$color_green_lv1}
+				}
+				li:first-child {
+					display:block;height:60px;background-color:$color_gray_lv2;line-height:60px;border:0 none;
+					em {height:60px;font-size:30px;line-height:60px}
+					a {height:60px;font-size:18px;line-height:60px}
+					b {
+						height:60px;font-size:12px;line-height:60px;
+						i {height:60px;line-height:60px}
+					}
+				}
+				li:hover em,li:hover a,li:hover b {opacity:1}
+			}
+			ol:hover li {display:block;background-color:$color_gray_lv3}
 		}
 		#clock {float:left;width:180px;height:60px;font-size:18px;text-align:center;line-height:60px;color:$color_gray_lv3}
 		.search {
