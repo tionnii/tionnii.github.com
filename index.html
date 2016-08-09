@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Web + Thing</title>
-<link rel="stylesheet" href="/public/dist/css/style.css">
-<link rel="stylesheet" href="/public/dist/css/common.css">
-<link rel="stylesheet" href="/public/dist/css/font-awesome.min.css">
-<script src="/public/dist/js/plugin/progressbar/progressbar.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/dist/css/style.css">
+<link rel="stylesheet" type="text/css" href="/public/dist/css/common.css">
+<link rel="stylesheet" type="text/css" href="/public/dist/css/font-awesome.min.css">
+<script type="text/javascript" src="/public/dist/js/plugin/progressbar/progressbar.min.js"></script>
 </head>
 <body>
 	<header>
@@ -51,12 +51,12 @@
 				<div><button type="button">JOIN W++</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 가입해서 다양한 프로젝트와 사람을 만나보세요.</p></div>
 			</div>
 			<div class="login">
-				<div class="profile">
-					<a href="#"><img src="/public/dist/img/img_profile_test.jpg" alt="profile image" /></a>
-				</div>
 				<div id="lv">
 					<span>Lv&nbsp;<b>6</b></span>
 					<p class="header_lv"></p>
+				</div>			
+				<div class="profile">
+					<a href="#"><img src="/public/dist/img/img_profile_test.jpg" alt="profile image" /></a>
 				</div>
 				<div class="name">
 					<strong><a href="#">Tionnii &lsaquo;C&rsaquo;&lsaquo;T&rsaquo;</a></strong>
@@ -95,7 +95,7 @@
 			<div class="rank">
 				<ol>
 					<li><em>1</em><a href="#">Google Play Redesign</a><b><i class="fa fa-caret-up"></i>10</b></a></li>
-					<li><em>2</em><a href="#">2017금산세계인삼엑스포</a><b><i class="fa fa-caret-down"></i>30</b></a></li>
+					<li><em>2</em><a href="#">국민카드</a><b><i class="fa fa-caret-down"></i>30</b></a></li>
 					<li><em>3</em><a href="#">국민카드</a><b><i class="fa fa-minus"></i>0</b></a></li>
 					<li><em>4</em><a href="#">국민카드</a><b><i class="fa fa-caret-up"></i>4</b></a></li>
 					<li><em>5</em><a href="#">국민카드</a><b><i class="fa fa-caret-up"></i>7</b></a></li>
@@ -111,9 +111,9 @@
 				
 			</div>
 			-->
-			<div class="search">
+			<div class="search" id="search">
 				<div>
-					<span><input type="text" name="search" placeholder="SEARCH" /></span>
+					
 				</div>
 				<button type="button"><i class="fa fa-search"></i></button>
 			</div>
@@ -131,7 +131,10 @@
 	</section>
 	<footer>
 		footer
-	</footer>
+	</footer>	
+	<script type="text/javascript" src="/public/dist/js/plugin/jquery/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="/public/dist/js/plugin/greensock-js/TweenMax.min.js"></script>
+	<script type="text/javascript" src="/public/dist/js/plugin/greensock-js/easing/EasePack.min.js"></script>
 	<script type="text/javascript">
 	/*
 var dayarray = new Array("SUN","MON","TUE","WED","THU","FRI","SAT");
@@ -170,6 +173,7 @@ var lv = new ProgressBar.Circle('.header_lv', {
             top: '76px',
             padding: 0,
             margin: 0,
+            color: '#fff',
             transform: {
                 prefix: true,
                 value: 'translate(-50%, -50%)'
@@ -197,13 +201,33 @@ var lv = new ProgressBar.Circle('.header_lv', {
 });
 
 var over_lv = document.getElementById('lv');
-over_lv.addEventListener("mouseenter", function() {
+over_lv.addEventListener('mouseenter', function() {
 	lv.animate(0.88);
 });
-over_lv.addEventListener("mouseleave", function() {
+over_lv.addEventListener('mouseleave', function() {
 	lv.animate(0);
 });
-//lv.animate(0.88);  // Value from 0.0 to 1.0
+
+$('#search').on('mouseenter', function() {
+	var box_search = $('#search div');
+	TweenMax.to(box_search, 0.5, {right:0, ease:Power2.easeOut, onComplete:function() {
+		box_search.html('<span><input type="text" name="search" placeholder="SEARCH" /></span>');
+		$('#search').find('input').focus();
+	}});
+});
+
+$('#search').on('mouseleave', function() {
+	var box_search = $('#search div');
+	box_search.html('');
+	TweenMax.to(box_search, 0.5, {right:-300, ease:Power2.easeOut});
+});
+/*
+var btn_sch = document.getElementById('search');
+btn_sch.addEventListener('mouseenter', function() {
+	var ipt_search = btn_sch.getElementByTagName('div');
+	
+});
+*/
 	</script>
 </body>
 </html>
