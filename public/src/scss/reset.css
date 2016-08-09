@@ -11,5 +11,5 @@ a{color:#030c22;text-decoration:none}
 a:hover,a:active,a:focus{text-decoration:none}
 strong, b {font-weight:normal}
 button{cursor:pointer}
-input[type="text"],input[type="submit"],button{height:20px;border:0 none;outline:0;-webkit-appearance:none;font-size:14px;line-height:20px}
+input[type="text"],input[type="submit"],button{width:100%;height:20px;border:0 none;outline:0;-webkit-appearance:none;font-size:14px;line-height:20px}
 /*.blind{visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0}*/
