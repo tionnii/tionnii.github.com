@@ -14,37 +14,6 @@
 <body>
 	<header>
 		<h1><a href="#">W++</a></h1>
-
-		<!-- header :: path -->
-		<div class="path">
-			<a href="#" class="home"><i class="fa fa-home"></i></a>
-			<ul class="lv1">
-				<li>&rsaquo;
-					<div class="lv2">
-						<a href="#">OPEN PROJECT</a>
-						<ul>
-							<li><a href="#">HOME<span>Ctrl + H</span></a></li>
-							<li><a href="#">COMPANY<span>Ctrl + C</span></a></li>
-							<li><a href="#">MEMBER<span>Ctrl + M</span></a></li>							
-							<li><a href="#">LINK<span>Ctrl + L</span></a></li>
-							<li><a href="#">ABOUT<span>Ctrl + A</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li>&rsaquo;
-					<div class="lv2">
-						<a href="#">COMPANY PROJECT</a>
-						<ul>
-							<li><a href="#">COMPANY PROJECT-MENU01<span>Alt + C1</span></a></li>
-							<li><a href="#">COMPANY PROJECT-MENU02<span>Alt + C2</span></a></li>
-							<li><a href="#">COMPANY PROJECT-MENU03<span>Alt + C3</span></a></li>
-						</ul>
-					</div>				
-				</li>
-			</ul>
-		</div>
-		<!-- //header :: path -->
-
 		<div class="util log"> <!-- [D] "log" :: on/off -->
 			<div class="logoff">
 				<div><button type="button">LOG IN</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 회원이면 로그인 해보세요. [<a href="#">아이디 찾기</a> / <a href="#">비밀번호 찾기</a>]</p></div>
@@ -93,18 +62,22 @@
 				</div>
 			</div>
 			<div class="rank">
-				<ol>
-					<li><em>1</em><a href="#">Google Play Redesign</a><b><i class="fa fa-caret-up"></i>10</b></a></li>
-					<li><em>2</em><a href="#">국민카드</a><b><i class="fa fa-caret-down"></i>30</b></a></li>
-					<li><em>3</em><a href="#">국민카드</a><b><i class="fa fa-minus"></i>0</b></a></li>
-					<li><em>4</em><a href="#">국민카드</a><b><i class="fa fa-caret-up"></i>4</b></a></li>
-					<li><em>5</em><a href="#">국민카드</a><b><i class="fa fa-caret-up"></i>7</b></a></li>
-					<li><em>6</em><a href="#">국민카드</a><b><i class="fa fa-minus"></i>0</b></a></li>
-					<li><em>7</em><a href="#">국민카드</a><b><i class="fa fa-caret-up"></i>8</b></a></li>
-					<li><em>8</em><a href="#">국민카드</a><b><i class="fa fa-caret-up"></i>2</b></a></li>
-					<li><em>9</em><a href="#">국민카드</a><b><i class="fa fa-minus"></i>0</b></a></li>
-					<li><em>10</em><a href="#">국민카드</a><b><i class="fa fa-caret-down"></i>9</b></a></li>
-				</ol>
+				<a href="#"><i class="fa fa-trophy"></i>2016.08 TOP10</a>
+				<div class="list">
+					<strong><a href="#">RANK<span>&rsaquo;</span></a></strong>
+					<ol>
+						<li><a href="#"><em>1</em>Google Play Redesign<b><i class="fa fa-caret-up"></i>10</b></a></li>
+						<li><a href="#"><em>2</em>국민카드<b><i class="fa fa-caret-down"></i>30</b></a></li>
+						<li><a href="#"><em>3</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
+						<li><a href="#"><em>4</em>국민카드<b><i class="fa fa-caret-up"></i>4</b></a></li>
+						<li><a href="#"><em>5</em>국민카드<b><i class="fa fa-caret-up"></i>7</b></a></li>
+						<li><a href="#"><em>6</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
+						<li><a href="#"><em>7</em>국민카드<b><i class="fa fa-caret-up"></i>8</b></a></li>
+						<li><a href="#"><em>8</em>국민카드<b><i class="fa fa-caret-up"></i>2</b></a></li>
+						<li><a href="#"><em>9</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
+						<li><a href="#"><em>10</em>국민카드<b><i class="fa fa-caret-down"></i>9</b></a></li>
+					</ol>
+				</div>
 			</div>
 			<!--
 			<div id="clock">
@@ -219,8 +192,9 @@ $('#search').on('mouseenter', function() {
 $('#search').on('mouseleave', function() {
 	var box_search = $('#search div');
 	box_search.html('');
-	TweenMax.to(box_search, 0.5, {right:-300, ease:Power2.easeOut});
+	TweenMax.to(box_search, 0.5, {right:-250, ease:Power2.easeOut});
 });
+
 /*
 var btn_sch = document.getElementById('search');
 btn_sch.addEventListener('mouseenter', function() {
