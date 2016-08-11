@@ -19,18 +19,16 @@
 				<div><button type="button">LOG IN</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 회원이면 로그인 해보세요. [<a href="#">아이디 찾기</a> / <a href="#">비밀번호 찾기</a>]</p></div>
 				<div><button type="button">JOIN W++</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 가입해서 다양한 프로젝트와 사람을 만나보세요.</p></div>
 			</div>
-			<div class="login">
-				<div id="lv">
-					<span>Lv&nbsp;<b>6</b></span>
-					<p class="header_lv"></p>
-				</div>			
+			<div class="login">		
 				<div class="profile">
 					<a href="#"><img src="/public/dist/img/img_profile_test.jpg" alt="profile image" /></a>
 				</div>
 				<div class="name">
-					<strong><a href="#">Tionnii &lsaquo;C&rsaquo;&lsaquo;T&rsaquo;</a></strong>
+					<strong><a href="#">Tionnii</a><b>&lsaquo;C&rsaquo;&lsaquo;T&rsaquo;</b></strong>
 					<span>by&nbsp;<a href="#" class="color-job3">Publisher</a></span> <!-- [D] "color-job1 ~ color-job2 :: job color -->
+					<!-- 임시 삭제 
 					<span class="point">1000<i class="fa fa-plus-circle"></i></span>
+					//임시 삭제 -->
 				</div>			
 				<div class="push">
 					<a href="#"><i class="fa fa-bell"></i></a>
@@ -62,7 +60,7 @@
 				</div>
 			</div>
 			<div class="rank">
-				<a href="#"><i class="fa fa-trophy"></i>2016.08 TOP10</a>
+				<a href="#"><i class="fa fa-list-ol"></i>2016.08 TOP10</a>
 				<div class="list">
 					<strong><a href="#">RANK<span>&rsaquo;</span></a></strong>
 					<ol>
@@ -97,7 +95,34 @@
 				<span class="bar-1"></span>
 				<span class="bar-2"></span>
 			</a>
+			<ul class="lv1">
+				<li>
+					<a href="#"><i class="fa fa-home"></i></a>
+					<strong><a href="#">HOME<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-trophy"></i></a>
+					<strong><a href="#">RANKING<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-building"></i></a>
+					<strong><a href="#">COMPANY<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-group"></i></a>
+					<strong><a href="#">MEMBER<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-bookmark"></i></a>
+					<strong><a href="#">LINK<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-info"></i></a>
+					<strong><a href="#">ABOUT<span></span></a></strong>
+				</li>
+			</ul>
 		</nav>
+
 	</header>
 	<section id="container">
 		project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>project<br/>
@@ -135,7 +160,7 @@ function goforit(){
 }
 goforit();
 */
-
+/*
 var lv = new ProgressBar.Circle('.header_lv', {
  text: {
         value: '',
@@ -172,7 +197,8 @@ var lv = new ProgressBar.Circle('.header_lv', {
     }
   }
 });
-
+*/
+/*
 var over_lv = document.getElementById('lv');
 over_lv.addEventListener('mouseenter', function() {
 	lv.animate(0.88);
@@ -180,7 +206,7 @@ over_lv.addEventListener('mouseenter', function() {
 over_lv.addEventListener('mouseleave', function() {
 	lv.animate(0);
 });
-
+*/
 $('#search').on('mouseenter', function() {
 	var box_search = $('#search div');
 	TweenMax.to(box_search, 0.5, {right:0, ease:Power2.easeOut, onComplete:function() {
