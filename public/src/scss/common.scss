@@ -7,8 +7,8 @@ $color_gray_lv0:#e1e1e1;
 $color_gray_lv1:#999999;
 $color_gray_lv2:#505050;
 $color_gray_lv3:#333333;
-$color_orange_lv0:#0872ba;
-$color_orange_lv1:#6784b3;
+$color_theme_lv0:#b3c1d9;
+$color_theme_lv1:#6784b3;
 
 /* point color setting :: 빨간색/파란색/녹색/주황색 */
 $color_blue_lv0:#a3d0e7;
@@ -32,7 +32,7 @@ header {
 	position:fixed;top:0;left:0;width:100%;height:50px;background-color:$color_gray_lv3;
 	h1 {
 		position:absolute;top:0;left:50px;
-		a {display:inline-block;height:40px;padding:5px 20px;font-size:30px;color:$color_orange_lv1;line-height:40px;opacity:0.5}
+		a {display:inline-block;height:40px;padding:5px 20px;font-size:30px;color:$color_theme_lv1;line-height:40px;opacity:0.5}
 		a:hover {opacity:1}
 	}
 
@@ -74,7 +74,7 @@ header {
 				}
 				span {
 					display:block;padding-top:5px;font-size:12px;color:$color_gray_lv1;
-					a {color:$color_orange_lv1;opacity:0.5}
+					a {color:$color_theme_lv1;opacity:0.5}
 					a:hover {opacity:1}
 				}
 				/*
@@ -221,7 +221,7 @@ header {
 				a {display:block;position:relative;z-index:10;width:50px;height:50px;background-color:$color_gray_lv2;font-size:24px;color:$color_gray_lv1;line-height:50px;text-align:center}
 				strong {
 					display:none;position:absolute;top:0;left:50px;height:50px;
-					a {display:block;width:110px;height:50px;padding:0 20px;background-color:$color_orange_lv1;color:$color_gray_lv1;font-size:18px;line-height:50px;text-align:left}
+					a {display:block;width:110px;height:50px;padding:0 20px;background-color:$color_theme_lv1;color:$color_gray_lv1;font-size:18px;line-height:50px;text-align:left}
 				}
 
 			}
@@ -246,6 +246,6 @@ footer {
 	padding:100px 0;background-color:$color_gray_lv3;
 	.copy {
 		font-size:12px;color:$color_gray_lv1;text-align:center;
-		span {color:$color_orange_lv1}
+		span {color:$color_theme_lv1}
 	}
 }
