@@ -6,13 +6,13 @@
 	width:$min_width_size;margin:0 auto;padding:120px 0;
 	.block {
 		h3 {
-			display:block;height:60px;margin:0 15px;border-bottom:1px solid $color_gray_lv1;
+			display:block;position:relative;height:60px;margin:0 15px;border-bottom:1px solid $color_gray_lv1;font-size:18px;font-weight:100;color:$color_gray_lv2;line-height:60px;
+			em {font-weight:100;color:$color_theme_lv1}
 			a {
-				display:block;position:relative;height:60px;font-size:18px;font-weight:100;color:$color_gray_lv1;line-height:60px;
-				em {color:$color_theme_lv1}
-				i {position:absolute;top:16px;right:0;font-size:30px}
+				position:absolute;top:16px;right:0;height:30px;font-size:18px;font-weight:100;line-height:30px;
+				i {font-size:30px;color:$color_gray_lv1}
 			}
-			a:hover {color:$color_gray_lv2}
+			a:hover i {color:$color_gray_lv2}
 		}
 		.box {
 			.list {
