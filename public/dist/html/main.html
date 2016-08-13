@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Web + Thing</title>
+<link rel="stylesheet" type="text/css" href="/public/dist/css/style.css">
+<link rel="stylesheet" type="text/css" href="/public/dist/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/public/dist/css/common.css">
+<link rel="stylesheet" type="text/css" href="/public/dist/css/container.css">
+<script type="text/javascript" src="/public/dist/js/plugin/progressbar/progressbar.min.js"></script>
+</head>
+<body>
+	<header>
+		<h1><a href="#">W++</a></h1>
+		<div class="util log"> <!-- [D] "log" :: on/off -->
+			<div class="logoff">
+				<div><button type="button">LOG IN</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 회원이면 로그인 해보세요. [<a href="#">아이디 찾기</a> / <a href="#">비밀번호 찾기</a>]</p></div>
+				<div><button type="button">JOIN W++</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 가입해서 다양한 프로젝트와 사람을 만나보세요.</p></div>
+			</div>
+			<div class="login">		
+				<div class="profile">
+					<a href="#"><img src="/public/dist/img/img_profile_test.jpg" alt="profile image" /></a>
+				</div>
+				<div class="name">
+					<strong><a href="#">Tionnii</a><b>&lsaquo;C&rsaquo;&lsaquo;T&rsaquo;</b></strong>
+					<span>by&nbsp;<a href="#">Publisher</a></span> <!-- [D] "color-job1 ~ color-job2 :: job color -->
+					<!-- 임시 삭제 
+					<span class="point">1000<i class="fa fa-plus-circle"></i></span>
+					//임시 삭제 -->
+				</div>			
+				<div class="push">
+					<a href="#"><i class="fa fa-bell"></i></a>
+					<span class="num">10</span>
+					<div class="list">
+						<strong><a href="#">ALRAM<i class="fa fa-chevron-circle-right"></i></a></strong>
+						<ul>
+							<li><i class="fa fa-bell"></i>친구 초대<span>by&nbsp;<a href="#">Tionnii</a></span></li>
+							<li><i class="fa fa-bell"></i>회사 초대<span>by&nbsp;<a href="#">국민은행</a></span></li>
+							<li><i class="fa fa-bell"></i>보상 전달<span>by&nbsp;<a href="#">W++</a></span></li>
+							<li><i class="fa fa-bell"></i>레벨 상승<span>by&nbsp;<a href="#">W++</a></span></li>
+						</ul>
+						<i class="fa fa-caret-up"></i>
+					</div>
+				</div>
+				<div class="quest">
+					<a href="#"><i class="fa fa-flag"></i></a>
+					<span class="num">10</span>
+					<div class="list">
+						<strong><a href="#">QUEST<i class="fa fa-chevron-circle-right"></i></a></strong>
+						<ul>
+							<li class="on"><i class="fa fa-flag"></i>퀘스트 1<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li> <!-- [D] "on" :: quest on/off -->
+							<li><i class="fa fa-flag"></i>퀘스트 2<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li>
+							<li class="on"><i class="fa fa-flag"></i>퀘스트 3<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li>
+							<li><i class="fa fa-flag"></i>퀘스트 4<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li>
+						</ul>
+						<i class="fa fa-caret-up"></i>
+					</div>					
+				</div>
+			</div>
+			<div class="rank">
+				<a href="#"><i class="fa fa-list-ol"></i></a>
+				<div class="list">
+					<strong><a href="#">RANK<i class="fa fa-chevron-circle-right"></i></a></strong>
+					<ol>
+						<li><a href="#"><em>1</em>Google Play Redesign<b><i class="fa fa-caret-up"></i>10</b></a></li>
+						<li><a href="#"><em>2</em>국민카드<b><i class="fa fa-caret-down"></i>30</b></a></li>
+						<li><a href="#"><em>3</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
+						<li><a href="#"><em>4</em>국민카드<b><i class="fa fa-caret-up"></i>4</b></a></li>
+						<li><a href="#"><em>5</em>국민카드<b><i class="fa fa-caret-up"></i>7</b></a></li>
+						<li><a href="#"><em>6</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
+						<li><a href="#"><em>7</em>국민카드<b><i class="fa fa-caret-up"></i>8</b></a></li>
+						<li><a href="#"><em>8</em>국민카드<b><i class="fa fa-caret-up"></i>2</b></a></li>
+						<li><a href="#"><em>9</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
+						<li><a href="#"><em>10</em>국민카드<b><i class="fa fa-caret-down"></i>9</b></a></li>
+					</ol>
+					<i class="fa fa-caret-up"></i>
+				</div>
+			</div>
+			<!--
+			<div id="clock">
+				
+			</div>
+			-->
+			<div class="search" id="search">
+				<div>
+					
+				</div>
+				<button type="button"><i class="fa fa-search"></i></button>
+			</div>
+		</div>
+
+		<nav>
+			<a href="#" class="btn-nav">
+				<span class="bar-1"></span>
+				<span class="bar-2"></span>
+			</a>
+			<ul class="lv1">
+				<li>
+					<a href="#"><i class="fa fa-home"></i></a>
+					<strong><a href="#">HOME<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-trophy"></i></a>
+					<strong><a href="#">RANKING<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-building"></i></a>
+					<strong><a href="#">COMPANY<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-group"></i></a>
+					<strong><a href="#">MEMBER<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-bookmark"></i></a>
+					<strong><a href="#">LINK<span></span></a></strong>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-info"></i></a>
+					<strong><a href="#">ABOUT<span></span></a></strong>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+
+	<section id="container">
+		<div class="block">
+			<h3><a href="#"><em>HOT</em> OPEN PROJECT<i class="fa fa-chevron-circle-right"></i></a></h3>
+			<div class="box column-1">
+				<ul class="list">
+					<li>
+						<div class="thum">
+							<a href="#">
+								<img src="/public/dist/img/img_project_01.jpg" alt="green farm" />
+							</a>
+						</div>
+						<div class="info">
+							<strong class="base">
+								<a href="#">Green farm</a>
+								<span class="device">
+									<a href="#" class="active"> <!-- [D] "active" on/off -->
+										<i class="fa fa-desktop"></i>
+										<span class="tooltip">DESKTOP<i class="fa fa-caret-up"></i></span>
+									</a> 
+									<a href="#">
+										<i class="fa fa-tablet"></i>
+										<span class="tooltip">TABLET<i class="fa fa-caret-up"></i></span>
+									</a>
+									<a href="#">
+										<i class="fa fa-mobile" aria-hidden="true"></i>
+										<span class="tooltip">MOBILE<i class="fa fa-caret-up"></i></span>
+									</a>
+								</span>
+							</strong>
+							<span class="date">2016.08.13</span>
+							<span class="url">URL : <a href="https://paneralandofclean.com" target="_blank">https://paneralandofclean.com</a></span>
+							<span class="product">Product by <a href="#">Green Studio</a>&nbsp;/&nbsp;
+							<span class="client">Request by <a href="#">SAMSUNG</a></span></span>
+							<div class="score">
+								<em class="avg"><span>78</span><a href="#">VOTE</a></em>
+								<ul>
+									<li>
+										<span>DESIGN</span>
+										<div id="score-design"></div>
+									</li>
+									<li>
+										<span>UI/UX</span>
+										<div id="score-ui"></div>
+									</li>
+									<li>
+										<span>TECHNICAL</span>
+										<div id="score-tech"></div>
+									</li>
+									<li>
+										<span>ACCESSIBILITY</span>
+										<div id="score-access"></div>
+									</li>
+								</ul>
+							</div>
+							<div class="add">
+								<span class="vote"><b>1200</b> VOTED</span>
+								<span class="love"><a href="#"><i class="fa fa-heart"></i></a> 100</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+
+	<footer>
+		<div class="copy"><span>W++</span> &copy; COPYRIGHT 2016. ALL RIGHTS RESERVED.</div>
+	</footer>	
+	<script type="text/javascript" src="/public/dist/js/plugin/jquery/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="/public/dist/js/plugin/greensock-js/TweenMax.min.js"></script>
+	<script type="text/javascript" src="/public/dist/js/plugin/greensock-js/easing/EasePack.min.js"></script>
+	<script type="text/javascript" src="/public/dist/js/script.js"></script>
+	<script type="text/javascript">
+
+	/* var color */
+	var color_red_lv0 = '#f4a69e';
+	var color_red_lv1 = '#e84c3d';
+	var color_yellow_lv0 = '#ffd98d';
+	var color_yellow_lv1 = '#ffb21a';
+	var color_green_lv0 = '#c3dfac';
+	var color_green_lv1 = '#87be58';
+	var color_blue_lv0 = '#a3d0e7';
+	var color_blue_lv1 = '#46a1ce';
+
+	var bar_design = new ProgressBar.Line('#score-design', {
+		strokeWidth: 4,
+		easing: 'easeInOut',
+		duration: 1500,
+		color: color_red_lv1,
+		trailColor: color_red_lv0,
+		trailWidth: 4,
+		text: {
+			style: {
+			  // Text color.
+			  // Default: same as stroke color (options.color)
+			  position: 'absolute',
+			  top: '0',
+			  right: '0',
+			  padding: 0,
+			  margin: 0,
+			  transform: null
+			},
+			autoStyleContainer: false
+		},
+		step: function(state, bar) {
+			bar.setText(Math.round(bar.value() * 100));
+		}
+	});
+
+	var bar_ui = new ProgressBar.Line('#score-ui', {
+		strokeWidth: 4,
+		easing: 'easeInOut',
+		duration: 1500,
+		color: color_yellow_lv1,
+		trailColor: color_yellow_lv0,
+		trailWidth: 4,
+		text: {
+			style: {
+			  // Text color.
+			  // Default: same as stroke color (options.color)
+			  position: 'absolute',
+			  top: '0',
+			  right: '0',
+			  padding: 0,
+			  margin: 0,
+			  transform: null
+			},
+			autoStyleContainer: false
+		},
+		step: function(state, bar) {
+			bar.setText(Math.round(bar.value() * 100));
+		}
+	});
+
+	var bar_tech = new ProgressBar.Line('#score-tech', {
+		strokeWidth: 4,
+		easing: 'easeInOut',
+		duration: 1500,
+		color: color_green_lv1,
+		trailColor: color_green_lv0,
+		trailWidth: 4,
+		text: {
+			style: {
+			  // Text color.
+			  // Default: same as stroke color (options.color)
+			  position: 'absolute',
+			  top: '0',
+			  right: '0',
+			  padding: 0,
+			  margin: 0,
+			  transform: null
+			},
+			autoStyleContainer: false
+		},
+		step: function(state, bar) {
+			bar.setText(Math.round(bar.value() * 100));
+		}
+	});
+
+	var bar_access = new ProgressBar.Line('#score-access', {
+		strokeWidth: 4,
+		easing: 'easeInOut',
+		duration: 1500,
+		color: color_blue_lv1,
+		trailColor: color_blue_lv0,
+		trailWidth: 4,
+		text: {
+			style: {
+			  // Text color.
+			  // Default: same as stroke color (options.color)
+			  position: 'absolute',
+			  top: '0',
+			  right: '0',
+			  padding: 0,
+			  margin: 0,
+			  transform: null
+			},
+			autoStyleContainer: false
+		},
+		step: function(state, bar) {
+			bar.setText(Math.round(bar.value() * 100));
+		}
+	});
+
+	bar_design.animate(0.78);
+	bar_ui.animate(0.90);
+	bar_tech.animate(0.85);
+	bar_access.animate(0.97);
+	</script>
+</body>
+</html>

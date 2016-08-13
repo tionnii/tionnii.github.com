@@ -1,234 +1,203 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Web + Thing</title>
-<link rel="stylesheet" type="text/css" href="/public/dist/css/style.css">
-<link rel="stylesheet" type="text/css" href="/public/dist/css/common.css">
-<link rel="stylesheet" type="text/css" href="/public/dist/css/font-awesome.min.css">
-<script type="text/javascript" src="/public/dist/js/plugin/progressbar/progressbar.min.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>작업리스트</title>
+<style type="text/css">
+* {margin:0; padding:0;}
+html {overflow-y:scroll;}
+body {background:#fff; color:#666; font:12px/1.5 Malgun Gothic, Tahoma, Sans-serif;}
+a {color:#27e; text-decoration:none;}
+a:focus, a:hover, a:active {text-decoration:underline;}
+.header {padding:0.5em; font:12px/1.5 Malgun Gothic, Tahoma, Sans-serif;}
+.header h1 {color:#444; font-size:2em;}
+.header h1 strong {font-size:70%;}
+.header .nav {list-style:none; background:#969696; padding:0.5em 0.5em 0.2em; color:#f9f9f9; font-weight:bold; font-size:1.1em;}
+.header .nav li {display:inline; margin-right:0.5em;}
+.header .nav li a {color:#f9f9f9;}
+.header .nav li a.on {color:#fff !important; border-bottom:2px solid #3e3e3e; text-shadow:#7c7c7c 2px 1px 2px; text-decoration:none; font-size:105%;}
+.header .nav-otherlink {list-style:none; text-align:right; padding:0.5em 0.5em 0.2em; color:#969696; font-size:1em;}
+.header .nav-otherlink li {display:inline-block; margin-left:20px;}
+.header .nav-otherlink li a {color:#969696; font-weight:bold;}
+.header .nav-otherlink li a.on {color:#3e3e3e;}
+.header .nav-otherlink li a.on:before {content:'→'; font-size:0.9em;}
+.rule {background:#f7f7f7; margin:0 0.8em 2em; padding:0.5em; font-size:95%;}
+.rule dt {margin-bottom:0.3em; font-weight:bold;}
+.rule dd {padding-left:0.5em;}
+.rule dd ul {list-style-type:square; margin-left:1.2em;}
+.total {margin:0 1em 0.5em; padding-left:0.3em; font-size:0.9em; font-weight:bold; color:#888;}
+.body {padding-bottom:10em;}
+.section {margin:0 1em;}
+.section + .section {margin-top:1em;}
+.section .title {margin:0; padding:1em 2em; border:1px solid #ccc; background-color:#0295C9; color:#fff; font-weight:bold; font-size:125%; margin-top:-1px; position:relative; *zoom:1; cursor:pointer;}
+.section table {width:100%; border-collapse:collapse; border-spacing:0; border:0;}
+.section table caption {display:none;}
+.section table th {color:#333; background-color:#eee; font-size:11px; text-align:center;}
+.section table td {text-align:left; width:10%;}
+.section table th, table td {padding:0.3em; border:1px solid #ddd; }
+.section table tr.depth-3 td:first-child,
+.section table tr.depth-3 td:nth-child(2),
+.section table tr.depth-3 .file {background-color:#e3f994;}
+.section table tr.controller .file:after {content:'ctr'; display:inline-block; font-size:12px; color:#fff; min-width:14px; height:14px; border-radius:7px; background-color:#cf6a18; padding:0 5px; text-align:center; line-height:11px; vertical-align:middle; margin-left:4px;}
+.section table td.tit {color:#333;}
+.section table td.file {width:150px; color:#d4d4d4;}
+.section table td.path {width:80px;}
+.section table td.date {width:70px; text-align:center; font-style:italic; white-space:nowrap;  font-style:normal; font-size:10px; color:#999;}
+.section table td.en,
+.section table td.jp,
+.section table td.cn {width:22px; text-align:center;}
+.section table td.date del {color:#aaa !important;}
+.section table td.stat {width:30px; text-align:center; font-family:Gulim;}
+.section table td.desc, .section table td.note, .section table td.history {width:auto; font-style:italic;}
+.section table td ul {list-style:none; margin:0; padding:0 20px; font-style:italic;}
+.section table td em {color:#c82026;}
+.section table td em.blue {color:#69f;}
+.section table td.gray {background:#e3e3e3;}
+.section table tr.overcoloring {background:#f6f6f6 !important;}
+.section table tr.today {background:#f7f1f9; /*background:#fbf3f3;*/}
+.section table tr.today .date {color:#444;}
+.section table tbody.remove td {background-color:#ccc;}
+.section table .line-through {text-decoration:line-through}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery.fn.stat = function (options) {
+	var settings = jQuery.extend({
+		total: '.total',
+		title: 'h2.title',
+		content: 'div.content',
+		files: 'tbody:not(.remove) tr',
+		stat: 'td.stat',
+		completed: '●',
+		index: 0,
+		openAll: true,
+		speed: 'fast'
+	}, options),
+	all_sections = this;
+	return this.each(function () {
+		var self = this,
+			$self = $(self),
+			title_text = [],
+			completed = 0;
+		self.section_title = $(settings.title, $self);
+		self.content = $(settings.content, $self);
+		self.files = $(settings.files, $self);
+		self.files.each(function () {
+			var stat = $(settings.stat, this);
+			stat.each(function () {
+				var text = $(this).text();
+				if (text && (text === settings.completed)) {
+					completed++;
+				}
+			});
+		});
+		title_text = [self.section_title.text(), '(',completed,'/',self.files.length,')',' ',': 진행율',Math.round(completed/self.files.length*100),'%',];
+		self.section_title.text(title_text.join(''));
+		self.section_title.bind('click', function () {
+			self.content.slideToggle();
+		});
+
+		//total
+		var completedAll = 0;
+		$(settings.stat).each(function () {
+			var text = $(this).text();
+			if (text && (text == settings.completed)) {
+				completedAll++;
+			}
+		});
+		$(settings.total).text('Total : '+completedAll+'/'+$(settings.files).length+'pages (전체진행율'+Math.round(completedAll/$(settings.files).length*100)+'%)');
+	});
+};
+
+$(document).ready(function () {
+	$('div.section').stat();
+
+	//over-coloring
+	$('div.section tbody tr').mouseover(function() {
+		$(this).addClass('overcoloring');
+	}).mouseout(function() {
+		$(this).removeClass('overcoloring');
+	});
+	autoLink();
+});
+
+/*
+var autoLink = function(){
+	jQuery.each($('.section'), function(i){
+		var lan = $(this).find('tbody tr');
+		var path = '';
+		var path3 = $(this).find('tbody tr').eq(0).find('.path').text();
+		jQuery.each(lan, function(j){
+			if ($(this).find('.stat').text() == '●' || $(this).find('.stat').text() == '○'){
+				if ($(this).find('.file a').hasClass('manual')) return;
+				$(this).find('.file a').attr({
+					'href' : path + path3 + $(this).find('.file a').text() + '.html'
+				});
+			} else {
+				$(this).find('.file a').bind('click', function(){return false;});
+			}
+		});
+	});
+};
+*/
+</script>
 </head>
 <body>
-	<header>
-		<h1><a href="#">W++</a></h1>
-		<div class="util log"> <!-- [D] "log" :: on/off -->
-			<div class="logoff">
-				<div><button type="button">LOG IN</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 회원이면 로그인 해보세요. [<a href="#">아이디 찾기</a> / <a href="#">비밀번호 찾기</a>]</p></div>
-				<div><button type="button">JOIN W++</button><p><b>&rsaquo;</b>&nbsp;&nbsp;&nbsp;&nbsp;W++ 가입해서 다양한 프로젝트와 사람을 만나보세요.</p></div>
-			</div>
-			<div class="login">		
-				<div class="profile">
-					<a href="#"><img src="/public/dist/img/img_profile_test.jpg" alt="profile image" /></a>
-				</div>
-				<div class="name">
-					<strong><a href="#">Tionnii</a><b>&lsaquo;C&rsaquo;&lsaquo;T&rsaquo;</b></strong>
-					<span>by&nbsp;<a href="#">Publisher</a></span> <!-- [D] "color-job1 ~ color-job2 :: job color -->
-					<!-- 임시 삭제 
-					<span class="point">1000<i class="fa fa-plus-circle"></i></span>
-					//임시 삭제 -->
-				</div>			
-				<div class="push">
-					<a href="#"><i class="fa fa-bell"></i></a>
-					<span class="num">10</span>
-					<div class="list">
-						<strong><a href="#">ALRAM<i class="fa fa-chevron-circle-right"></i></a></strong>
-						<ul>
-							<li><i class="fa fa-bell"></i>친구 초대<span>by&nbsp;<a href="#">Tionnii</a></span></li>
-							<li><i class="fa fa-bell"></i>회사 초대<span>by&nbsp;<a href="#">국민은행</a></span></li>
-							<li><i class="fa fa-bell"></i>보상 전달<span>by&nbsp;<a href="#">W++</a></span></li>
-							<li><i class="fa fa-bell"></i>레벨 상승<span>by&nbsp;<a href="#">W++</a></span></li>
-						</ul>
-						<i class="fa fa-caret-up"></i>
-					</div>
-				</div>
-				<div class="quest">
-					<a href="#"><i class="fa fa-flag"></i></a>
-					<span class="num">10</span>
-					<div class="list">
-						<strong><a href="#">QUEST<i class="fa fa-chevron-circle-right"></i></a></strong>
-						<ul>
-							<li class="on"><i class="fa fa-flag"></i>퀘스트 1<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li> <!-- [D] "on" :: quest on/off -->
-							<li><i class="fa fa-flag"></i>퀘스트 2<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li>
-							<li class="on"><i class="fa fa-flag"></i>퀘스트 3<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li>
-							<li><i class="fa fa-flag"></i>퀘스트 4<span>100<i class="fa fa-plus-circle"></i> / 100<i class="fa fa-arrow-circle-up"></i></span></li>
-						</ul>
-						<i class="fa fa-caret-up"></i>
-					</div>					
-				</div>
-			</div>
-			<div class="rank">
-				<a href="#"><i class="fa fa-list-ol"></i></a>
-				<div class="list">
-					<strong><a href="#">RANK<i class="fa fa-chevron-circle-right"></i></a></strong>
-					<ol>
-						<li><a href="#"><em>1</em>Google Play Redesign<b><i class="fa fa-caret-up"></i>10</b></a></li>
-						<li><a href="#"><em>2</em>국민카드<b><i class="fa fa-caret-down"></i>30</b></a></li>
-						<li><a href="#"><em>3</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
-						<li><a href="#"><em>4</em>국민카드<b><i class="fa fa-caret-up"></i>4</b></a></li>
-						<li><a href="#"><em>5</em>국민카드<b><i class="fa fa-caret-up"></i>7</b></a></li>
-						<li><a href="#"><em>6</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
-						<li><a href="#"><em>7</em>국민카드<b><i class="fa fa-caret-up"></i>8</b></a></li>
-						<li><a href="#"><em>8</em>국민카드<b><i class="fa fa-caret-up"></i>2</b></a></li>
-						<li><a href="#"><em>9</em>국민카드<b><i class="fa fa-minus"></i>0</b></a></li>
-						<li><a href="#"><em>10</em>국민카드<b><i class="fa fa-caret-down"></i>9</b></a></li>
-					</ol>
-					<i class="fa fa-caret-up"></i>
-				</div>
-			</div>
-			<!--
-			<div id="clock">
-				
-			</div>
-			-->
-			<div class="search" id="search">
-				<div>
-					
-				</div>
-				<button type="button"><i class="fa fa-search"></i></button>
-			</div>
+<div class="header">
+	<h1>web + thing <strong>&gt; FILE LIST</strong></h1>
+</div>
+<dl class="rule">
+	<dt>작업현황판 작성 규칙</dt>
+	<dd>
+		<ul>
+			<li>상태표기 :  '△'(작업중 대기) , '○'(부분완료) , '●'(완료) 중 알맞은 것으로 표기. ('●'(완료) 표기부터 개발작업 가능)</li>
+			<li>날짜의 형식은 yyyy-mm-dd 으로 하며, html파일 수정내역이 있을 경우, 최초작성일('●'(완료)일 기준)은 남겨두고 옆에 마지막 수정일자를 표기. (ex. <del>2014-04-26</del> 2014-05-16)</li>
+		</ul>
+	</dd>
+</dl>
+<p class="total"></p>
+<div class="body">
+
+	<div class="section">
+		<h2 class="title">M.O.E</h2>
+		<div class="content">
+			<table border="1">
+				<thead>
+					<tr>
+						<th scope="col">1depth</th>
+						<th scope="col">2depth</th>
+						<th scope="col">path</th>
+						<th scope="col">file</th>
+						<th scope="col">date</th>
+						<th scope="col">note</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="tit">common</td>
+						<td></td>
+						<td class="path">/public/dist/html/common.html</td>
+						<td class="file"><a target="_blank" href="/public/dist/html/common.html">common.html</a></td>
+						<td class="date"></td>
+						<td class="note"></td>
+					</tr>
+					<!--
+					<tr>
+						<td class="tit"></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="path"></td>
+						<td class="file"><a target="_blank" href=""></a></td>
+						<td class="date"></td>
+						<td class="note"></td>
+					</tr>
+					-->
+				</tbody>
+			</table>
 		</div>
+	</div>
 
-		<nav>
-			<a href="#" class="btn-nav">
-				<span class="bar-1"></span>
-				<span class="bar-2"></span>
-			</a>
-			<ul class="lv1">
-				<li>
-					<a href="#"><i class="fa fa-home"></i></a>
-					<strong><a href="#">HOME<span></span></a></strong>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-trophy"></i></a>
-					<strong><a href="#">RANKING<span></span></a></strong>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-building"></i></a>
-					<strong><a href="#">COMPANY<span></span></a></strong>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-group"></i></a>
-					<strong><a href="#">MEMBER<span></span></a></strong>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-bookmark"></i></a>
-					<strong><a href="#">LINK<span></span></a></strong>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-info"></i></a>
-					<strong><a href="#">ABOUT<span></span></a></strong>
-				</li>
-			</ul>
-		</nav>
-
-	</header>
-	<section id="container">
-	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-	</section>
-	<footer>
-		<div class="copy"><span>W++</span> &copy; COPYRIGHT 2016. ALL RIGHTS RESERVED.</div>
-	</footer>	
-	<script type="text/javascript" src="/public/dist/js/plugin/jquery/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/public/dist/js/plugin/greensock-js/TweenMax.min.js"></script>
-	<script type="text/javascript" src="/public/dist/js/plugin/greensock-js/easing/EasePack.min.js"></script>
-	<script type="text/javascript">
-	/*
-var dayarray = new Array("SUN","MON","TUE","WED","THU","FRI","SAT");
-
-function getthedate(){
-	var w_date = new Date();
-	var day = w_date.getDay();
-	var hours = w_date.getHours();
-	var minutes = w_date.getMinutes();
-	var seconds = w_date.getSeconds();	
-
-	var dn = "AM";
-	if (hours>=12) dn="PM";
-	if (hours>12) hours = hours-12;
-	if (hours==0) hours = 12;
-	if (minutes<=9) minutes = "0"+minutes;
-	if (seconds<=9) seconds = "0"+seconds;
-	//change font size here
-	var c_date = dayarray[day]+" "+hours+":"+minutes+":"+seconds+" "+dn;
-	document.getElementById("clock").innerHTML=c_date;
-}
-getthedate();
-function goforit(){
-	setInterval("getthedate()",1000);
-}
-goforit();
-*/
-/*
-var lv = new ProgressBar.Circle('.header_lv', {
- text: {
-        value: '',
-        className: 'txt-lv',
-        style: {
-            position: 'absolute',
-            left: '50%',
-            top: '76px',
-            padding: 0,
-            margin: 0,
-            color: '#fff',
-            transform: {
-                prefix: true,
-                value: 'translate(-50%, -50%)'
-            }
-        },
-	},	
-  strokeWidth: 6,
-  trailWidth: 6,
-  trailColor: '#c7c7c7',
-  easing: 'easeInOut',
-  duration: 1000,
-  from: { color: '#464646', width: 6 },
-  to: { color: '#464646', width: 6 },
-  step: function(state, circle) {
-    circle.path.setAttribute('stroke', state.color);
-    circle.path.setAttribute('stroke-width', state.width);
-
-    var value = Math.round(circle.value() * 100) + ' %';
-    if ((value === 0) || (value === '0 %')) {
-      circle.setText('');
-    } else {
-      circle.setText(value);
-    }
-  }
-});
-*/
-/*
-var over_lv = document.getElementById('lv');
-over_lv.addEventListener('mouseenter', function() {
-	lv.animate(0.88);
-});
-over_lv.addEventListener('mouseleave', function() {
-	lv.animate(0);
-});
-*/
-$('#search').on('mouseenter', function() {
-	var box_search = $('#search div');
-	TweenMax.to(box_search, 0.5, {right:0, ease:Power2.easeOut, onComplete:function() {
-		box_search.html('<span><input type="text" name="search" /></span>');
-		$('#search').find('input').focus();
-	}});
-});
-
-$('#search').on('mouseleave', function() {
-	var box_search = $('#search div');
-	box_search.html('');
-	TweenMax.to(box_search, 0.5, {right:-250, ease:Power2.easeOut});
-});
-
-/*
-var btn_sch = document.getElementById('search');
-btn_sch.addEventListener('mouseenter', function() {
-	var ipt_search = btn_sch.getElementByTagName('div');
-	
-});
-*/
-	</script>
+</div>
 </body>
 </html>
