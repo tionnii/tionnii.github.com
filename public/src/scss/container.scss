@@ -17,8 +17,8 @@
 		}
 		.box {
 			.list {
-				margin-top:30px;
 				li {
+					padding-top:30px;
 					.thum {
 						position:relative;
 						.ribbon {
@@ -54,7 +54,7 @@
 						float:left;width:495px;margin:0 15px;
 						.base {
 							display:block;position:relative;
-							a {display:inline-block;height:30px;font-size:24px;color:$color_theme_lv2;line-height:30px;opacity:0.5}
+							a {display:inline-block;height:30px;font-size:24px;color:$color_gray_lv2;line-height:30px;opacity:0.5}
 							a:hover {opacity:1}
 							.device {
 								position:absolute;top:0;right:0;font-size:24px;
@@ -96,7 +96,7 @@
 							ul {
 								padding-left:120px;margin-left:20px;
 								li {
-									position:relative;margin-top:0;height:40px;
+									position:relative;height:40px;margin-top:0;padding-top:0;
 									span {display:block;position:relative;height:10px;line-height:10px}
 									div {
 										margin-top:5px;padding-right:50px;
@@ -137,7 +137,7 @@
 						margin-top:30px;
 						.base {
 							display:block;position:relative;
-							a {display:inline-block;height:30px;font-size:24px;color:$color_theme_lv2;line-height:30px;opacity:0.5}
+							a {display:inline-block;height:30px;font-size:24px;color:$color_gray_lv2;line-height:30px;opacity:0.5}
 							a:hover {opacity:1}
 							.device {
 								position:absolute;top:0;right:0;font-size:24px;
@@ -179,7 +179,7 @@
 							ul {
 								padding-left:120px;margin-left:20px;
 								li {
-									float:none;position:relative;width:auto;height:40px;margin:0;
+									float:none;position:relative;width:auto;height:40px;margin:0;padding-top:0;
 									span {display:block;position:relative;height:10px;line-height:10px}
 									div {
 										position:relative;padding-right:50px;height:12px;margin-top:5px;
@@ -251,7 +251,7 @@
 						margin-top:30px;
 						.base {
 							display:block;position:relative;
-							a {display:inline-block;height:30px;font-size:24px;color:$color_theme_lv2;line-height:30px;opacity:0.5}
+							a {display:inline-block;height:30px;font-size:24px;color:$color_gray_lv2;line-height:30px;opacity:0.5}
 							a:hover {opacity:1}
 							.device {
 								position:absolute;top:0;right:0;font-size:24px;
@@ -293,7 +293,7 @@
 							ul {
 								padding-left:120px;margin-left:20px;
 								li {
-									float:none;position:relative;width:auto;height:40px;margin:0;
+									float:none;position:relative;width:auto;height:40px;margin:0;padding-top:0;
 									span {display:block;position:relative;height:10px;line-height:10px}
 									div {
 										position:relative;padding-right:50px;height:12px;margin-top:5px;
@@ -355,7 +355,74 @@
 				}
 			}
 			.list:after {display:block;clear:both;content:''}
-		}				
+			.list.company {
+				li {
+					.thum {
+						a {
+							display:block;width:120px;height:120px;padding:60px 100px;background-color:$color_white;text-align:center;line-height:120px;
+							img {width:100%;max-height:100%;vertical-align:middle}
+						}
+					}
+					.info {
+						.add {
+							height:30px;
+							.sns {
+								float:left;height:30px;font-size:18px;line-height:30px;
+								li {
+									float:left;width:auto;margin:0;padding-top:0;
+									a {display:block;margin-right:10px;font-size:30px;color:$color_theme_lv1}
+									a:hover {color:$color_theme_lv2}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.column-7 {
+			.list {
+				li {
+					float:left;width:120px;margin:0 15px;
+					.thum {
+						a {display:block;width:120px;height:120px}
+					}
+					.info {
+						margin-top:15px;
+						.base {
+							display:block;position:relative;
+							a {display:inline-block;height:30px;font-size:15px;color:$color_gray_lv2;line-height:30px;opacity:0.5}
+							a:hover {opacity:1}
+						}
+						.job {
+							display:block;color:$color_gray_lv2;
+							a {display:inline-block;font-size:12px;color:$color_theme_lv2;opacity:0.5}
+							a:hover {opacity:1}
+						}						
+						.add {
+							height:30px;margin-top:15px;
+							.sns {
+								display:block;height:30px;font-size:18px;line-height:30px;
+								li {
+									float:left;width:auto;margin:0;padding-top:0;
+									a {display:block;margin-right:10px;font-size:24px;color:$color_theme_lv1}
+									a:hover {color:$color_theme_lv2}
+								}
+							}
+							.love {
+								display:block;font-size:12px;color:$color_gray_lv2;
+								a {
+									display:inline-block;height:30px;line-height:30px;vertical-align:middle;
+									i {font-size:24px;color:$color_theme_lv1}
+									i:hover {color:$color_theme_lv2}
+								}
+							}
+						}
+						.add:after {display:block;clear:both;content:''}
+					}
+				}
+			}
+			.list:after {display:block;clear:both;content:''}
+		}		
 	}
 	.block:first-child {margin-top:0}
 }
