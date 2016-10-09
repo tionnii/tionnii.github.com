@@ -1,0 +1,25 @@
+{
+  "name": "tionnii",
+  "version": "1.0.0",
+  "description": "tionnii portfolio",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tionnii/tionnii.github.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tionnii/tionnii.github.com/issues"
+  },
+  "homepage": "https://github.com/tionnii/tionnii.github.com#readme"
+}
