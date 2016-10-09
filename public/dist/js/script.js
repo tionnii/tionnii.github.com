@@ -1,1 +1,0 @@
-$("#search").on("mouseenter",function(){var e=$("#search div");TweenMax.to(e,.5,{right:0,ease:Power2.easeOut,onComplete:function(){e.html('<span><input type="text" name="search" /></span>'),$("#search").find("input").focus()}})}),$("#search").on("mouseleave",function(){var e=$("#search div");e.html(""),TweenMax.to(e,.5,{right:-240,ease:Power2.easeOut})});
