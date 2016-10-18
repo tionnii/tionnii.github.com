@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* page min width size */
+$min_width_size:1050px;
+
+/* Theme color setting :: lv이 높을수록 색이 진함 */
+$color_gray_lv0:#e1e1e1;
+$color_gray_lv1:#999999;
+$color_gray_lv2:#505050;
+$color_gray_lv3:#333333;
+$color_theme_lv0:#b3c1d9;
+$color_theme_lv1:#b3c1d9;
+
+.color-red {color:$color_gray_lv0}
+.color-yellow {color:$color_gray_lv0}
+.color-green {color:$color_gray_lv0}
+.color-blue {color:$color_gray_lv0}
